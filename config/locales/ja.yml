@@ -9,6 +9,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       customer: "顧客"
+      comment: "対応"
     attributes:
       customer:
         family_name: "姓"
@@ -16,6 +17,8 @@ ja:
         email: "メールアドレス"
         company_id: "所属会社"
         post_id: "役職"
+      comment:
+        body: "対応内容"
   date:
     abbr_day_names:
     - 日

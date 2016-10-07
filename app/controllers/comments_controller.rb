@@ -17,7 +17,11 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to customer_url(@comment.customer_id)
     else
-      redirect_to customer_url(@comment.customer_id)
+      @customer = Customer.find(@comment.customer_id)
+      @comment = @comment
+      @comments = @customer.comments
+      render template: "customers/show"
+      #redirect_to customer_url(@comment.customer_id), flash: {error: @comment.errors.full_messages}
     end
   end
 
