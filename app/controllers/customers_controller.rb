@@ -48,6 +48,6 @@ class CustomersController < ApplicationController
   end
   
   def find_customer
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find_by(id: params[:id])
   end
 end
