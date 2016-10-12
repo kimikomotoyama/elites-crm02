@@ -50,17 +50,18 @@
       <% end %>
     <% end %>
      
-    <% if user_signed_in? && current_user.image_url.present? %>
+     <% if user_signed_in? && current_user.image_url.present? %>
       <%= image_tag(current_user.image_url, :width=> "50", :height=> "50", :alt => "アイコン") %>
+      <%= form_for(@comment, url: { controller: :comments, action: :create }) do |f| %>
+        <div class="form-group">
+          <%= f.label :body , '対応内容' %><br>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <%= f.hidden_field :customer_id, value: @customer.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit class: "btn btn-default" %>
+      <% end %>
     <% end %>
-    <%= form_for(@comment, url: { controller: :comments, action: :create }) do |f| %>
-      <div class="form-group">
-        <%= f.label :body , '対応内容' %><br>
-        <%= f.text_area :body, class: "form-control" %>
-      </div>
-      <%= f.hidden_field :customer_id, value: @customer.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit class: "btn btn-default" %>
-    <% end %>
+    
   </div>
 </div>
